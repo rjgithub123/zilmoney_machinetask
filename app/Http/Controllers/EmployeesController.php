@@ -36,10 +36,27 @@ class EmployeesController extends Controller
         return redirect()->route('employees.index');
     }
 
+    public function edit($id)
+    {
+        $employee=Employees::with('languages')->findOrFail($id);
+        $languages=Language::get();
+        return view('employees.edit', compact('employee','languages'));
+    }
+
     public function update(UpdateEmployeeRequest $request)
     {
+        dd("jdhf");
         $employees=Employees::update($request->validated());
         $employees->languages()->sync($request->languages);
+
+        return redirect()->route('employees.index');
+    }
+
+    public function destroy($id)
+    {
+        $employee=Employees::findOrFail($id);
+        $employee->languages()->detach();
+        $employee->delete();
 
         return redirect()->route('employees.index');
     }
