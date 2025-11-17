@@ -4,6 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeesController;
 
 
-Route::resource('/', EmployeesController::class)->name('employees');
+Route::resource('/', EmployeesController::class)->names('employees');
 
-//Route::get('employees', [EmployeesController::class, 'create'])->name('employees.create');
+//Route::resource('employees', EmployeesController::class)->names('employees');

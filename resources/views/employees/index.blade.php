@@ -11,7 +11,7 @@
 @if($employees)
 @foreach ($employees as $emp)
     <tr>
-    <td>{$emp->first_name}</td>
+    <td>{{$emp->name}}</td>
 </tr>
 @endforeach
 @else

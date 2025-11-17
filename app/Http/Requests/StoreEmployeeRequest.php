@@ -11,7 +11,7 @@ class StoreEmployeeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,8 @@ class StoreEmployeeRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'willing_to_work' => 'required|boolean',
-            'languages' => 'arreay|required'
+            'languages' => 'required|array',
+            'languages.*' => 'exists:languages,id',
         ];
     }
 }

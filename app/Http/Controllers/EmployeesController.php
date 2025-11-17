@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Employees;
+use App\Models\Language;
+use App\Http\Requests\StoreEmployeeRequest;
+use App\Http\Requests\UpdateEmployeeRequest;
 
 class EmployeesController extends Controller
 {
@@ -29,11 +32,8 @@ class EmployeesController extends Controller
     {
 
         $employees=Employees::create($request->validated());
-        $employees->languages()->sync($request->lanugaes);
-
+        $employees->languages()->sync($request->languages);
         return redirect()->route('employees.index');
-
-
     }
 
     public function update(UpdateEmployeeRequest $request)
